@@ -1,0 +1,353 @@
+<!doctype html>
+<!--
+  Vaultbird landing page, design "Four compartments, one vault" (2026-11-24, replaces the rejected certificate design).
+  Blueprint phase 7 rules applied:
+  s7-1 static site, one styles.css, relative links, no analytics/trackers/external fonts/CDNs ·
+  s7-look-1 the app's own look: its home screen (Media | Files | Contacts, chips, tiles) drawn in HTML and its kind colours ·
+  s7-look-2 differs from every "Websites" row in store-shot-styles.md, including the rejected Vaultbird certificate site
+    (hero: dark full-bleed night band, headline left + drawn home screen right · sections: four shaped compartment panels,
+     six peace-of-mind rows, a connected 4-node path, a comparison table, a security teaser, short FAQ, night closing CTA band ·
+     colours: night #0B1030 band over paper #F1F2F8 with kind colours indigo-violet / teal / amber (dark #090C16) ·
+     font: IBM Plex Sans Bold display + Plex Mono labels, self-hosted · art: the app's own UI drawn in HTML/CSS, no screenshots) ·
+  s7-look-2-b owner preview before publishing · s7-2-b privacy says only anonymous usage counts ·
+  s7-7 canonical, og:image 1200x630 from this hero, JSON-LD MobileApplication price 0, sitemap.xml, robots.txt, keyword-rich title ·
+  s7-8 "Coming soon", no App Store link until live (the badge is not a link, aria-disabled).
+  2026-11-24: reworked into a selling page (owner) and a Security page added.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vaultbird: Private Photo, Video, File and Contact Vault with Encrypted iCloud Backup and Paper Recovery Key</title>
+  <meta name="description" content="Vaultbird keeps private photos, videos, files and contacts in one encrypted vault on your iPhone, backs them up end to end encrypted in your own iCloud, and brings them back with a 24-word paper key. No account, no ads.">
+  <link rel="canonical" href="https://iamrkasula.github.io/vaultbird-app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vaultbird">
+  <meta property="og:title" content="Vaultbird: photos, videos, files and contacts. One private vault.">
+  <meta property="og:description" content="Encrypted on your iPhone. Backed up to your own iCloud. A paper key brings it all back. No account, no ads.">
+  <meta property="og:url" content="https://iamrkasula.github.io/vaultbird-app/">
+  <meta property="og:image" content="https://iamrkasula.github.io/vaultbird-app/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vaultbird: the headline Photos, videos, files and contacts. One private vault. beside a drawing of the app's home screen">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0B1030" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#050817" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/IBMPlexSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Vaultbird",
+    "alternateName": "Vaultbird: Photo Vault",
+    "url": "https://iamrkasula.github.io/vaultbird-app/",
+    "image": "https://iamrkasula.github.io/vaultbird-app/assets/icon.png",
+    "description": "One private vault for photos, videos, files and contacts: encrypted on the iPhone, end-to-end encrypted backup in your own iCloud, a 24-word paper recovery key and a restore drill.",
+    "operatingSystem": "iOS",
+    "applicationCategory": "MultimediaApplication",
+    "publisher": { "@type": "Organization", "name": "Zegree" }
+  }
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="g-hill" viewBox="0 0 24 24"><circle cx="17" cy="7" r="3" fill="currentColor"/><path d="M2 20 9 11l5 6 3-3 5 6z" fill="currentColor"/></symbol>
+      <symbol id="g-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 11 5 20 4c-1 9-6 15-15 15z" fill="currentColor"/></symbol>
+      <symbol id="g-wave" viewBox="0 0 24 24"><path d="M2 14c3-3 5-3 8 0s5 3 8 0 4-2 4-2v8H2z" fill="currentColor"/><circle cx="7" cy="7" r="2.5" fill="currentColor"/></symbol>
+      <symbol id="g-bloom" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="currentColor"/><circle cx="7" cy="14" r="4" fill="currentColor" opacity=".8"/><circle cx="17" cy="14" r="4" fill="currentColor" opacity=".8"/></symbol>
+      <symbol id="g-play" viewBox="0 0 24 24"><path d="M6 3.5v17L20.5 12z" fill="currentColor"/></symbol>
+      <symbol id="g-live" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="10" stroke-dasharray="1.6 2.2"/></g></symbol>
+      <symbol id="g-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="g-dash" viewBox="0 0 24 24"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+      <symbol id="g-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+      <symbol id="g-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="g-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="g-seal" viewBox="0 0 24 24"><polygon fill="currentColor" points="23.00,12.00 21.51,13.89 22.16,16.21 20.07,17.39 19.78,19.78 17.39,20.07 16.21,22.16 13.89,21.51 12.00,23.00 10.11,21.51 7.79,22.16 6.61,20.07 4.22,19.78 3.93,17.39 1.84,16.21 2.49,13.89 1.00,12.00 2.49,10.11 1.84,7.79 3.93,6.61 4.22,4.22 6.61,3.93 7.79,1.84 10.11,2.49 12.00,1.00 13.89,2.49 16.21,1.84 17.39,3.93 19.78,4.22 20.07,6.61 22.16,7.79 21.51,10.11"/><path d="M7.6 12.3l3 3 5.8-6.2" style="stroke:var(--on-brand)" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="g-sealline" viewBox="0 0 24 24"><polygon fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" points="23.00,12.00 21.51,13.89 22.16,16.21 20.07,17.39 19.78,19.78 17.39,20.07 16.21,22.16 13.89,21.51 12.00,23.00 10.11,21.51 7.79,22.16 6.61,20.07 4.22,19.78 3.93,17.39 1.84,16.21 2.49,13.89 1.00,12.00 2.49,10.11 1.84,7.79 3.93,6.61 4.22,4.22 6.61,3.93 7.79,1.84 10.11,2.49 12.00,1.00 13.89,2.49 16.21,1.84 17.39,3.93 19.78,4.22 20.07,6.61 22.16,7.79 21.51,10.11"/><path d="M7.6 12.3l3 3 5.8-6.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="g-island" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><rect x="8.5" y="9" width="7" height="6" rx="1.5"/><path d="M10 9V7.5a2 2 0 0 1 4 0V9"/></g></symbol>
+      <symbol id="g-eyeoff" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 20 20 4"/></g></symbol>
+      <symbol id="g-doors" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="9" height="15" rx="1.5"/><rect x="12" y="3" width="9" height="17" rx="1.5"/></g><circle cx="9.5" cy="12.5" r="1" fill="currentColor"/><circle cx="14.5" cy="11.5" r="1" fill="currentColor"/></symbol>
+      <symbol id="g-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6H8l1.5-2h5L16 6h2.5A2.5 2.5 0 0 1 21 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.6"/></g></symbol>
+      <symbol id="g-undo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5 3.5 9.5 8 14"/><path d="M4 9.5h10a6 6 0 0 1 0 12h-3"/></g></symbol>
+      <symbol id="g-cog" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></g></symbol>
+      <symbol id="g-photo" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 18l5-6 4 4 2-2 3 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="g-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></symbol>
+      <symbol id="g-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="g-person" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 20.5c1.2-4 4-6 7.5-6s6.3 2 7.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="night hero">
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="./"><img src="assets/icon.png" alt="" width="32" height="32">Vaultbird</a>
+        <nav aria-label="Site"><a href="security/">Security</a><a href="support/">Support</a><a href="privacy/">Privacy</a></nav>
+      </header>
+
+      <div class="hero-grid">
+        <div>
+          <h1>Photos, videos, files and contacts. <em>One private vault.</em></h1>
+          <p class="sub">Locked on your iPhone, backed up end to end encrypted in your own iCloud, and brought back on a new phone by a paper key only you hold.</p>
+          <div class="cta">
+            <span class="store-badge" role="link" aria-disabled="true"><svg aria-hidden="true"><use href="#g-phone"/></svg><span><small>Coming soon on the</small><b>App Store</b></span></span>
+            <a class="hero-link" href="#path-h">See how it keeps your photos safe <span aria-hidden="true">↓</span></a>
+          </div>
+          <ul class="trust" aria-label="At a glance">
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>No account</li>
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>No ads</li>
+            <li><svg aria-hidden="true"><use href="#g-check"/></svg>No tracking</li>
+          </ul>
+        </div>
+
+        <div class="phone" role="img" aria-label="Drawing of the Vaultbird home screen: the Vault title with a seal, a Media, Files and Contacts switch with Media selected, album chips and a grid of photo and video tiles">
+          <div class="screen" aria-hidden="true">
+            <div class="sbar"><span>9:41</span><span class="island"></span><span class="bat"></span></div>
+            <div class="app-head">
+              <b>Vault</b>
+              <span class="gear"><svg class="seal"><use href="#g-seal"/></svg><svg class="cog"><use href="#g-cog"/></svg></span>
+            </div>
+            <div class="app-status"><svg><use href="#g-check"/></svg>Backed up in your own iCloud</div>
+            <div class="seg"><span class="on">Media</span><span>Files</span><span>Contacts</span></div>
+            <div class="chips"><span class="on">All</span><span>Videos</span><span>Trips</span></div>
+            <div class="tiles">
+              <div class="tile t1" style="--i:0"><svg><use href="#g-hill"/></svg><svg class="live"><use href="#g-live"/></svg></div>
+              <div class="tile t2" style="--i:1"><svg><use href="#g-leaf"/></svg></div>
+              <div class="tile t8" style="--i:2"><svg><use href="#g-wave"/></svg><span class="dur"><svg><use href="#g-play"/></svg>0:42</span></div>
+              <div class="tile t4" style="--i:3"><svg><use href="#g-bloom"/></svg></div>
+              <div class="tile t3" style="--i:4"><svg><use href="#g-hill"/></svg></div>
+              <div class="tile t5" style="--i:5"><svg><use href="#g-wave"/></svg><span class="dur"><svg><use href="#g-play"/></svg>1:15</span></div>
+              <div class="tile t6" style="--i:6"><svg><use href="#g-leaf"/></svg></div>
+              <div class="tile t7" style="--i:7"><svg><use href="#g-hill"/></svg></div>
+              <div class="tile t1" style="--i:8"><svg><use href="#g-bloom"/></svg><span class="dur"><svg><use href="#g-play"/></svg>0:08</span></div>
+              <div class="tile t5" style="--i:9"><svg><use href="#g-leaf"/></svg></div>
+              <div class="tile t2" style="--i:10"><svg><use href="#g-hill"/></svg></div>
+              <div class="tile t3" style="--i:11"><svg><use href="#g-wave"/></svg></div>
+              <div class="tile t4" style="--i:12"><svg><use href="#g-leaf"/></svg></div>
+              <div class="tile t6" style="--i:13"><svg><use href="#g-hill"/></svg></div>
+              <div class="tile t7" style="--i:14"><svg><use href="#g-bloom"/></svg></div>
+            </div>
+            <span class="add"><svg><use href="#g-plus"/></svg>Add</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="s-kinds" aria-labelledby="kinds-h">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">What it keeps</p>
+          <h2 id="kinds-h">Four compartments</h2>
+          <p>Everything private on your phone, in one vault, each kind kept the way it should be.</p>
+        </div>
+
+        <div class="kinds">
+          <article class="kind k-photos">
+            <p class="label"><svg aria-hidden="true"><use href="#g-photo"/></svg>Photos</p>
+            <h3 class="line">Kept exactly as taken: originals, edits and Live Photos whole.</h3>
+            <div class="art" aria-hidden="true">
+              <div class="ph"><svg class="live"><use href="#g-live"/></svg></div>
+              <div class="ph-tags"><span class="tag">LIVE</span><span class="tag">original + edit</span><span class="tag">HEIC</span></div>
+            </div>
+          </article>
+
+          <article class="kind k-videos">
+            <p class="label"><svg aria-hidden="true"><use href="#g-film"/></svg>Videos</p>
+            <h3 class="line">Play inside the vault, never copied out to play.</h3>
+            <div class="art vid" aria-hidden="true">
+              <div class="vid-frame"><span><svg><use href="#g-play"/></svg></span></div>
+              <div class="vid-bar"><span>0:24</span><span class="track"></span><span>0:42</span></div>
+            </div>
+          </article>
+
+          <article class="kind k-files">
+            <p class="label"><svg aria-hidden="true"><use href="#g-doc"/></svg>Files</p>
+            <h3 class="line">PDFs, scans and any file from the Files app, previewed in place.</h3>
+            <div class="art" aria-hidden="true">
+              <div class="file"><span class="badge">PDF</span><span><b>Lease agreement</b><small>12 pages · 2.4 MB</small></span></div>
+              <div class="file"><span class="badge word">DOC</span><span><b>Passport scan</b><small>2 pages · 860 KB</small></span></div>
+            </div>
+          </article>
+
+          <article class="kind k-contacts">
+            <p class="label"><svg aria-hidden="true"><use href="#g-person"/></svg>Contacts</p>
+            <h3 class="line">Full contact cards that stay out of your phone's Contacts and caller ID.</h3>
+            <div class="art card" aria-hidden="true">
+              <div class="card-top"><span class="avatar">MR</span><span><b>Maya R.</b><small>Lawyer</small></span></div>
+              <dl>
+                <div><dt>mobile</dt><dd>+1 ··· ··· 0187</dd></div>
+                <div><dt>email</dt><dd>m··@····.com</dd></div>
+              </dl>
+              <span class="tag">Not in Contacts</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-peace" aria-labelledby="peace-h">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">Peace of mind</p>
+          <h2 id="peace-h">The everyday worries, handled</h2>
+        </div>
+        <ul class="peace">
+          <li class="big">
+            <span class="glyph" aria-hidden="true"><svg><use href="#g-sealline"/></svg></span>
+            <h3>Know your backup works</h3>
+            <p>A seal on the home screen shows your backup is in place. Once a month every backed-up item is checked, and anything damaged is repaired.</p>
+          </li>
+          <li class="big">
+            <span class="glyph" aria-hidden="true"><svg><use href="#g-island"/></svg></span>
+            <h3>Nothing leaks to your phone</h3>
+            <p>Nothing from the vault appears in Spotlight, Siri suggestions, Files recents, Share suggestions, widgets, Contacts or caller ID, unless you move it out.</p>
+          </li>
+          <li>
+            <span class="glyph" aria-hidden="true"><svg><use href="#g-eyeoff"/></svg></span>
+            <h3>Guards against glances</h3>
+            <p>Blurred thumbnails if you like, a cover in the app switcher and while the screen is recorded, lock when you put it face down or shake it, and auto-lock.</p>
+          </li>
+          <li>
+            <span class="glyph" aria-hidden="true"><svg><use href="#g-doors"/></svg></span>
+            <h3>A decoy for when you're pressed</h3>
+            <p>A second passcode opens a separate, harmless vault. Nothing on your iPhone records that it was set up.</p>
+          </li>
+          <li>
+            <span class="glyph" aria-hidden="true"><svg><use href="#g-camera"/></svg></span>
+            <h3>Know who tried</h3>
+            <p>Turn on the break-in photo, and after 3 wrong passcodes the front camera takes one photo, kept inside your vault.</p>
+          </li>
+          <li>
+            <span class="glyph" aria-hidden="true"><svg><use href="#g-undo"/></svg></span>
+            <h3>Undo for mistakes</h3>
+            <p>Deleted items wait 30 days in Recently Deleted. After Delete Vault, your iCloud copy stays 30 days and your paper key still opens it.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="s-path" aria-labelledby="path-h">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">How it stays yours</p>
+          <h2 id="path-h">From your iPhone to a new one, and only with your key</h2>
+        </div>
+        <ol class="path">
+          <li>
+            <span class="node" aria-hidden="true">1</span>
+            <h3>Locked on this iPhone</h3>
+            <p>Everything is encrypted before it is saved. Only your passcode or your paper key opens it.</p>
+          </li>
+          <li>
+            <span class="node" aria-hidden="true">2</span>
+            <h3>Copied to your own iCloud, end to end encrypted</h3>
+            <p>Encrypted on your iPhone before upload, in your Apple Account's private iCloud. We can't see or open it.</p>
+          </li>
+          <li class="proof">
+            <span class="node" aria-hidden="true">3</span>
+            <h3>The restore drill proves it comes back</h3>
+            <p>Type your paper key and Vaultbird checks that every backed-up item opens, without changing anything on your iPhone.</p>
+          </li>
+          <li>
+            <span class="node" aria-hidden="true">4</span>
+            <h3>Your 24-word paper key brings everything back on a new iPhone</h3>
+            <p>Same iCloud account, Restore from iCloud Backup, type the 24 words. Everything returns.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="s-never" aria-labelledby="never-h">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">When something goes wrong</p>
+          <h2 id="never-h">What happens to your photos when…</h2>
+        </div>
+        <div class="table-box" tabindex="0" role="region" aria-labelledby="never-h">
+          <table>
+            <thead>
+              <tr><th scope="col"><span class="sr">When</span></th><th scope="col" class="us">In Vaultbird</th><th scope="col">In many photo vaults</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">You forget your passcode</th><td class="us"><span class="cell"><svg aria-hidden="true"><use href="#g-check"/></svg>Your 24-word paper key opens the vault and you choose a new passcode</span></td><td class="them"><span class="cell"><svg aria-hidden="true"><use href="#g-dash"/></svg>A reset through an account with the company, or locked out for good</span></td></tr>
+              <tr><th scope="row">You get a new iPhone</th><td class="us"><span class="cell"><svg aria-hidden="true"><use href="#g-check"/></svg>Everything comes back from your own iCloud with your paper key</span></td><td class="them"><span class="cell"><svg aria-hidden="true"><use href="#g-dash"/></svg>Moving items by hand, or a paid plan on the app's own cloud</span></td></tr>
+              <tr><th scope="row">An update or a crash goes wrong</th><td class="us"><span class="cell"><svg aria-hidden="true"><use href="#g-check"/></svg>Your backup is checked every month, item by item, and repaired</span></td><td class="them"><span class="cell"><svg aria-hidden="true"><use href="#g-dash"/></svg>Photos lost after an update are a common complaint in reviews</span></td></tr>
+              <tr><th scope="row">Someone guesses your passcode</th><td class="us"><span class="cell"><svg aria-hidden="true"><use href="#g-check"/></svg>Each wrong try waits longer, up to 15 minutes: trying every 6-digit code would take about 28 years. Nothing is ever erased</span></td><td class="them"><span class="cell"><svg aria-hidden="true"><use href="#g-dash"/></svg>Some apps wipe the vault after a few wrong tries</span></td></tr>
+              <tr><th scope="row">Your iPhone is lost or stolen</th><td class="us"><span class="cell"><svg aria-hidden="true"><use href="#g-check"/></svg>The vault is locked to that iPhone's chip; your iCloud copy opens only with your paper key</span></td><td class="them"><span class="cell"><svg aria-hidden="true"><use href="#g-dash"/></svg>Depends on whose cloud holds it and who has the key</span></td></tr>
+              <tr><th scope="row">You want everything back out</th><td class="us"><span class="cell"><svg aria-hidden="true"><use href="#g-check"/></svg>Export Everything: originals and Live Photos exactly as they came in</span></td><td class="them"><span class="cell"><svg aria-hidden="true"><use href="#g-dash"/></svg>Often one by one, sometimes compressed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">"Many photo vaults" describes common patterns in public App Store listings and reviews; individual apps differ.</p>
+      </div>
+    </section>
+
+    <section class="s-checked" aria-labelledby="checked-h">
+      <div class="wrap checked-grid">
+        <div class="sec-head">
+          <p class="label">Built to be checked</p>
+          <h2 id="checked-h">Standard, proven encryption, written down</h2>
+          <p><a class="go" href="security/">Read the security details<svg aria-hidden="true"><use href="#g-arrow"/></svg></a></p>
+        </div>
+        <div>
+          <ul class="facts">
+            <li><span class="label">Every item</span><b>AES-256-GCM, with its own random key for each item</b></li>
+            <li><span class="label">Your passcode</span><b>Stretched with Argon2id and bound to your iPhone's Secure Enclave</b></li>
+            <li><span class="label">Your backup</span><b>End to end encrypted in your own iCloud, no server of ours</b></li>
+            <li><span class="label">Our side</span><b>We never hold a key: no master key, no key escrow</b></li>
+          </ul>
+          <p class="note">The app sends only anonymous usage counts, like "backup turned on", never your items, names, passcode or key. <a href="privacy/">Privacy policy</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="s-faq" aria-labelledby="faq-h">
+      <div class="wrap faq-grid">
+        <div class="sec-head">
+          <p class="label">Questions</p>
+          <h2 id="faq-h">Short answers</h2>
+          <p><a class="more" href="support/">More answers on Support</a></p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>I forgot my passcode</summary>
+            <p>On the lock screen tap Forgot Passcode? and type the 24 words from your paper recovery key. Your vault opens and you choose a new passcode. Nothing is lost.</p>
+          </details>
+          <details>
+            <summary>I have a new iPhone</summary>
+            <p>Install Vaultbird on the new iPhone, signed in to the same iCloud account, and choose Restore from iCloud Backup. Type your 24-word paper key and everything comes back. A vault lives on one iPhone at a time.</p>
+          </details>
+          <details>
+            <summary>Do I need an account?</summary>
+            <p>No. There is no sign-in, no email and no account with us. Your vault lives on your iPhone, and its backup lives in your own iCloud.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="night band cta-band" aria-labelledby="band-h">
+      <div class="wrap">
+        <h2 id="band-h">Your photos, safe and yours. <em>Coming soon for iPhone.</em></h2>
+        <div class="cta">
+          <span class="store-badge" role="link" aria-disabled="true"><svg aria-hidden="true"><use href="#g-phone"/></svg><span><small>Coming soon on the</small><b>App Store</b></span></span>
+          <p class="fine">No account · No ads · No tracking</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav aria-label="Footer"><a href="privacy/">Privacy</a><a href="security/">Security</a><a href="support/">Support</a></nav>
+      <span>© 2026 Zegree</span>
+    </div>
+  </footer>
+</body>
+</html>

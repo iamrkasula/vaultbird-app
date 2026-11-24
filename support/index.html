@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- Support page, "Four compartments" design (2026-11-24). Blueprint s7-1, s7-3: FAQ, public contact email, what to put in a bug report. Feature requests by email until a board exists. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Support · Vaultbird</title>
+  <meta name="description" content="Vaultbird support: forgotten passcode, paper recovery key, moving to a new iPhone, iCloud backup, the restore drill, deleting everything, and how to contact us.">
+  <link rel="canonical" href="https://iamrkasula.github.io/vaultbird-app/support/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Vaultbird">
+  <meta property="og:title" content="Vaultbird Support">
+  <meta property="og:description" content="Answers about the paper key, new iPhones, backups and the restore drill, and how to reach us.">
+  <meta property="og:url" content="https://iamrkasula.github.io/vaultbird-app/support/">
+  <meta property="og:image" content="https://iamrkasula.github.io/vaultbird-app/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0B1030" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#050817" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="night page-head">
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="../"><img src="../assets/icon.png" alt="" width="32" height="32">Vaultbird</a>
+        <nav aria-label="Site"><a href="../security/">Security</a><a href="./" aria-current="page">Support</a><a href="../privacy/">Privacy</a></nav>
+      </header>
+      <div>
+        <h1>Support</h1>
+        <p class="meta">Answers first. Email us if yours isn't here.</p>
+        <div class="kind-rule" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="wrap doc">
+    <div class="col">
+
+    <h2>Questions</h2>
+    <div class="faq">
+      <details>
+        <summary>I forgot my passcode</summary>
+        <p>On the lock screen tap Forgot Passcode? and type the 24 words from your paper recovery key. Your vault opens and you choose a new passcode. Nothing is lost.</p>
+      </details>
+      <details>
+        <summary>I lost my passcode and my paper key</summary>
+        <p>Then no one can open the vault, not even us: we never hold a key, so there is no back door. You can erase it and start over with a new vault. This is why Vaultbird checks your paper at setup and reminds you once a year to check it again.</p>
+      </details>
+      <details>
+        <summary>I have a new iPhone</summary>
+        <p>Install Vaultbird on the new iPhone, signed in to the same iCloud account, and choose Restore from iCloud Backup. Type your 24-word paper key and everything comes back. A vault lives on one iPhone at a time.</p>
+      </details>
+      <details>
+        <summary>What does "An earlier backup is kept" mean?</summary>
+        <p>If you set up a new vault while an older backup is still in your iCloud, Vaultbird never overwrites it at once. The older backup stays for at least 30 days so its paper key can still restore it. After that date, the new vault starts backing up in its place.</p>
+      </details>
+      <details>
+        <summary>What is the restore drill?</summary>
+        <p>A practice restore. In Backup &amp; Key, start the Restore Drill and type your paper key. Vaultbird checks that every item in your iCloud backup opens with it, without changing anything on your iPhone. When it passes, you know your paper and your backup both work.</p>
+      </details>
+      <details>
+        <summary>How do I delete everything?</summary>
+        <p>In Settings choose Delete Vault, enter your passcode and type the confirmation word. Everything on this iPhone is removed at once. The encrypted iCloud backup is kept 30 days, in case it was a mistake (your paper key can still restore it), then deleted. To remove it sooner, go to iPhone Settings › your name › iCloud and delete Vaultbird's data.</p>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <p>No. There is no sign-in, no email and no account with us. Your vault lives on your iPhone, and its backup lives in your own iCloud.</p>
+      </details>
+    </div>
+
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>Bug reports, questions and feature ideas:</p>
+      <p class="mail"><a href="mailto:support@zegree.com?subject=Vaultbird%20support">support@zegree.com</a></p>
+    </div>
+
+    <h3>Feature ideas</h3>
+    <p>There is no ideas board yet. Send ideas to <a href="mailto:support@zegree.com?subject=Vaultbird%20idea">support@zegree.com</a>; every one is read.</p>
+
+    <h3>What to put in a bug report</h3>
+    <ul>
+      <li>Your iPhone model and iOS version (iPhone Settings › General › About).</li>
+      <li>The Vaultbird version (Vaultbird › Settings › About › Version).</li>
+      <li>What you did, step by step, what you expected and what happened instead.</li>
+      <li>A screenshot helps, as long as it shows nothing private.</li>
+    </ul>
+    <p class="warn"><strong>Never send your recovery words or your passcode</strong>, not to us and not to anyone. We will never ask for them.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav aria-label="Footer"><a href="../privacy/">Privacy</a><a href="../security/">Security</a><a href="./">Support</a></nav>
+      <span>© 2026 Zegree</span>
+    </div>
+  </footer>
+</body>
+</html>

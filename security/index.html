@@ -1,0 +1,128 @@
+<!doctype html>
+<!-- Security page (2026-11-24, owner). Same look as privacy/support. Facts from docs/crypto.md (format v1, Enclave binding,
+     backup padding, backup ownership, add-only inbox, hardening checklist, threat model) and spec/09-analytics.md.
+     Re-check whenever docs/crypto.md changes. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Security · Vaultbird</title>
+  <meta name="description" content="How Vaultbird protects your photos, videos, files and contacts: AES-256-GCM per item, an Argon2id passcode bound to the iPhone's Secure Enclave, end-to-end encrypted backup in your own iCloud, a 24-word recovery key, and no developer key, ever.">
+  <link rel="canonical" href="https://iamrkasula.github.io/vaultbird-app/security/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Vaultbird">
+  <meta property="og:title" content="Vaultbird Security">
+  <meta property="og:description" content="AES-256-GCM per item, Argon2id bound to the Secure Enclave, end-to-end encrypted iCloud backup, and we never hold a key.">
+  <meta property="og:url" content="https://iamrkasula.github.io/vaultbird-app/security/">
+  <meta property="og:image" content="https://iamrkasula.github.io/vaultbird-app/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0B1030" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#050817" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="night page-head">
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="../"><img src="../assets/icon.png" alt="" width="32" height="32">Vaultbird</a>
+        <nav aria-label="Site"><a href="./" aria-current="page">Security</a><a href="../support/">Support</a><a href="../privacy/">Privacy</a></nav>
+      </header>
+      <div>
+        <h1>Security</h1>
+        <p class="meta">Updated 24 November 2026 · Zegree</p>
+        <div class="kind-rule" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="wrap doc">
+    <div class="col">
+
+    <div class="summary"><p><strong>In short:</strong> everything is encrypted on your iPhone with standard algorithms. Your passcode opens it on this iPhone only; your 24-word paper key opens it anywhere. Your backup lives end to end encrypted in your own iCloud. We run no server for your data and we never hold a key.</p></div>
+
+    <h2>Every item has its own key</h2>
+    <p>Each photo, video, file, contact and thumbnail gets its own random 256-bit key. The item is encrypted with AES-256-GCM in 1 MiB chunks, each with a unique nonce and tied to the item and its position. Any changed byte, reordered or swapped chunks, or a cut-off ending is detected and refused.</p>
+    <p>Videos play by decrypting only the part being watched, in memory, so a decrypted copy is never written to disk.</p>
+    <p>Each item key is itself encrypted by your vault key. Names, dates, albums, contact fields and thumbnails live only inside an encrypted index; the files on disk have random names and padded sizes.</p>
+
+    <h2>Your passcode, and why a copy of your phone isn't enough</h2>
+    <p>Your vault key is never stored unencrypted. On this iPhone it is wrapped by a key made from three things together:</p>
+    <ul>
+      <li>your passcode, stretched with Argon2id (128 MiB of memory, 6 passes, about 0.4 seconds per try on an iPhone 12);</li>
+      <li>a random secret kept in this iPhone's Keychain that is never synced or backed up;</li>
+      <li>an elliptic-curve step with a key that lives inside this iPhone's Secure Enclave and can't be exported.</li>
+    </ul>
+    <p>Because every try needs this iPhone's Secure Enclave, a copy of the phone's files can't be used to guess your passcode on other computers.</p>
+    <p>After 4 wrong passcodes, every try has to wait: 30 seconds, then 1 minute, 5 minutes, and 15 minutes for every try after that. The wait is kept in this iPhone's Keychain, so closing Vaultbird or reinstalling it doesn't reset it, and it also runs on the iPhone's time since start-up, so changing the clock doesn't skip it.</p>
+    <p>At 15 minutes a try, someone holding your iPhone would need about <strong>28 years</strong> to try every 6-digit passcode, and about <strong>2,850 years</strong> for every 8-digit one. Wrong tries never erase your vault.</p>
+
+    <h2>Your 24-word recovery key</h2>
+    <p>At setup Vaultbird makes a 24-word recovery key from the standard BIP-39 English word list. It is your master key: it opens your vault if you forget your passcode, and it is the only thing that opens your iCloud backup. You prove you wrote it down correctly before setup finishes, and the paper shows a Key ID (like 7F3A-21C9) so you can tell which paper belongs to which vault. The Key ID is not secret and can't open anything.</p>
+    <p>You can make a new key at any time. The old one is removed from this iPhone and from iCloud, and checked to be gone, before Vaultbird tells you the old paper no longer works.</p>
+
+    <h2>On your iPhone</h2>
+    <ul>
+      <li>Every vault file uses iOS's strongest data protection, so it can't be read while the iPhone is locked.</li>
+      <li>The vault folder is excluded from iPhone and computer backups; the only backup is Vaultbird's own encrypted one.</li>
+      <li>Keys are kept in the Keychain for this device only, never synced.</li>
+      <li>Keys are held in memory only while the vault is open, and wiped when it locks, when you leave the app, and after 5 minutes without a touch.</li>
+      <li>Nothing from the vault reaches the rest of the phone: no Spotlight, Siri suggestions, Handoff, Files recents, Share suggestions, widget or notification content, and nothing written to Photos or Contacts unless you move it out.</li>
+    </ul>
+
+    <h2>Your iCloud backup</h2>
+    <p>Backup is optional. When it is on, your encrypted items go to the private CloudKit database of your own Apple Account. They are encrypted on your iPhone before upload, and only your recovery key opens them. There is no server of ours in between.</p>
+    <ul>
+      <li>Sizes are padded and every item is stored as exactly two records, so the kinds of items can't be told apart and items are hard to match to known files by their size.</li>
+      <li>The record that says which vault owns the backup is encrypted too.</li>
+      <li>A different vault, set up on this or another iPhone, can never overwrite your backup at once: it stays restorable with its own paper key for 30 days.</li>
+      <li>After Delete Vault, the backup is kept 30 days, so your paper key can still bring it back, then it is deleted.</li>
+    </ul>
+    <p>Still visible to Apple, or to anyone with your iCloud account: how many records there are, their padded sizes and when they were saved.</p>
+
+    <h2>Proof that it comes back</h2>
+    <p>The restore drill asks for your paper key, then decrypts every item in your iCloud backup and checks each one against its fingerprint (SHA-256), without changing anything on your iPhone. Once a month, while the vault is open, the backup is checked item by item and anything damaged is repaired.</p>
+
+    <h2>Adding without reading</h2>
+    <p>The Share extension and the optional break-in camera can add items to your vault but never read it. They hold only a public key: each item is sealed to the vault's inbox key, and only the open vault can unwrap it. Another vault's key can't open an inbox item.</p>
+
+    <h2>Typing, copying and the screen</h2>
+    <ul>
+      <li>Third-party keyboards are refused; passcode and key fields use secure entry, with autocorrect and keyboard learning off.</li>
+      <li>When you paste your recovery key, the clipboard is cleared at once. Anything you copy from the vault stays on this iPhone and expires.</li>
+      <li>The screen is covered in the app switcher and its content is hidden while the screen is recorded or mirrored.</li>
+    </ul>
+
+    <h2>The decoy vault</h2>
+    <p>Every install has two vault slots with their own keys. Without a decoy, the second slot holds a vault locked with a random passcode no one keeps. Whether a decoy is set up is recorded only inside your real vault's encrypted index, and every unlock works on both slots side by side, so timing doesn't reveal it. The decoy has no iCloud backup and never touches the real one.</p>
+
+    <h2>What the app sends</h2>
+    <p>Vaultbird writes no logs. The only data sent is anonymous feature counts through TelemetryDeck, with a random ID that changes every month and nothing at all while a decoy is open. They never include your items, names, how many items you keep, anything you type, your passcode or key. Crash reports come only from Apple, if you allow sharing with developers. Details: <a href="../privacy/">Privacy Policy</a>.</p>
+
+    <h2>We never hold a key</h2>
+    <p>There is no developer master key, no key escrow and no back door, ever. We can't open your vault or your backup, and we can't reset your passcode. Your passcode and your paper key are the only ways in.</p>
+
+    <h2>What this can't protect against</h2>
+    <ul>
+      <li><strong>Someone who knows your passcode,</strong> or watches you type it. The decoy can help if you are forced to open the app.</li>
+      <li><strong>A forgotten passcode together with a lost paper key.</strong> Then no one can open the vault, not even us. That is by design, and why setup checks your paper and Vaultbird reminds you once a year to check it again.</li>
+      <li><strong>Someone with full control of your unlocked iPhone.</strong> Vaultbird's keys can only be used while your iPhone is unlocked, so a locked iPhone first has to be broken into, which your iPhone's own passcode and Apple's security chip guard. Only someone who has your iPhone unlocked and uses specialist forensic tools to get around Vaultbird's waits could try passcodes on it, and every try is deliberately slow and has to run on that one iPhone. A longer passcode puts that out of practical reach: with 8 digits, trying them all would take well over a year of nonstop work, and with 10 digits more than a century. Keep your iPhone locked with its own passcode, and choose 8 or more digits for Vaultbird. Malware on an unlocked iPhone can also see what is on screen while the vault is open, as with any app.</li>
+      <li><strong>Copies you take out.</strong> Items you share, export or move back to Photos are no longer protected by Vaultbird.</li>
+      <li><strong>How much each vault slot holds is visible on disk.</strong> A decoy with a few items is a different size from an empty slot.</li>
+    </ul>
+
+    <h2>Report a security issue</h2>
+    <p>Email <a href="mailto:support@zegree.com?subject=Vaultbird%20security">support@zegree.com</a> with "security" in the subject. Please don't include your recovery words or passcode.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav aria-label="Footer"><a href="../privacy/">Privacy</a><a href="./">Security</a><a href="../support/">Support</a></nav>
+      <span>© 2026 Zegree</span>
+    </div>
+  </footer>
+</body>
+</html>
